@@ -1,13 +1,21 @@
-import { Link } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
 
-export default function CategoryCardView(props) {
+export default function CategoryCardView(props: { type: string }) {
   return (
-    <View style={styles.rootContainer}>
+    <Pressable
+      style={styles.rootContainer}
+      onPress={() =>
+        router.navigate({
+          pathname: '/screens/categoryjokelist',
+          params: { type: props.type, headerTitle: props.type },
+        })
+      }
+    >
       <Text style={styles.text}>
         {props.type.charAt(0).toUpperCase() + props.type.slice(1)}
       </Text>
-    </View>
+    </Pressable>
   );
 }
 
