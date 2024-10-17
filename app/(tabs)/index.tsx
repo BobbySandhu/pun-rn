@@ -45,6 +45,8 @@ export default function HomeScreen() {
           renderItem={({ item }) => (
             <JokeCardView setup={item.setup} punchline={item.punchline} />
           )}
+          onRefresh={fetchJokes}
+          refreshing={isLoading}
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
           contentContainerStyle={{ paddingVertical: 16, paddingHorizontal: 16 }}

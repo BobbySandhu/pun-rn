@@ -41,6 +41,8 @@ export default function CategoryJokeList() {
           renderItem={({ item }) => (
             <JokeCardView setup={item.setup} punchline={item.punchline} />
           )}
+          onRefresh={fetchCategoryJokes}
+          refreshing={isLoading}
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
           contentContainerStyle={{ paddingVertical: 16, paddingHorizontal: 16 }}

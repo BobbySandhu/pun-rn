@@ -36,6 +36,8 @@ export default function SearchScreen() {
           data={data}
           //keyExtractor={({ id }) => id}
           renderItem={({ item }) => <CategoryCardView type={item} />}
+          onRefresh={fetchCategories}
+          refreshing={isLoading}
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => <View style={{ height: 20 }}></View>}
           contentContainerStyle={{ paddingVertical: 16, paddingHorizontal: 16 }}
