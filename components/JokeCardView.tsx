@@ -7,7 +7,9 @@ export default function JokeCardView(props) {
       <Text style={[style.body, style.textStyleItalicBold]}>{props.setup}</Text>
       <Text style={style.body}>{props.punchline}</Text>
       <View style={style.buttonContainer}>
-        <Pressable onPress={() => console.log('save')} style={style.button}>
+        <Pressable onPress={() => {
+          
+        }} style={style.button}>
           <Text style={style.buttonText}>Save</Text>
         </Pressable>
         <Pressable

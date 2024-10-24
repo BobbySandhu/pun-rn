@@ -1,5 +1,6 @@
 import { style } from '@/common/appStyles';
 import JokeCardView from '@/components/JokeCardView';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { View, Text, ActivityIndicator, FlatList } from 'react-native';
@@ -11,11 +12,19 @@ export default function CategoryJokeList() {
   const [data, setData] = useState([]);
 
   const fetchCategoryJokes = async () => {
+    const url = `https://official-joke-api.appspot.com/jokes/${local.type}/ten`;
     try {
-      const response = await fetch(
-        `https://official-joke-api.appspot.com/jokes/${local.type}/ten`
-      );
+      const cachedData = await AsyncStorage.getItem(url);
+
+      if (cachedData !== null) {
+        setData(JSON.parse(cachedData));
+      }
+
+      const response = await fetch(url);
       const json = await response.json();
+
+      await AsyncStorage.setItem(url, JSON.stringify(json));
+
       setData(json);
     } catch (err) {
       console.log(err);
@@ -32,7 +41,7 @@ export default function CategoryJokeList() {
     <View style={style.rootContainer}>
       {isLoading ? (
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          <ActivityIndicator />
+          <ActivityIndicator size="large"/>
         </View>
       ) : (
         <FlatList

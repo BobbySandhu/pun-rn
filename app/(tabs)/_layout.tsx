@@ -19,9 +19,9 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="SearchScreen"
+          name="explore"
           options={{
-            title: 'Search',
+            title: 'Explore',
             tabBarIcon: ({ color, focused }) => (
               <TabBarIcon
                 name={focused ? 'search' : 'search-outline'}
@@ -31,7 +31,7 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="SavedScreen"
+          name="saved"
           options={{
             title: 'Saved',
             tabBarIcon: ({ color, focused }) => (
